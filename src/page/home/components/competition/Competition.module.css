@@ -1,0 +1,258 @@
+/* src/page/home/components/competition/Competition.module.css */
+
+.section {
+    margin-top: var(--space-3xl);
+    margin-bottom: var(--space-3xl);
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
+    width: min(var(--page-max-width), 100% - 0.75rem);
+    margin-inline: auto;
+
+    padding: clamp(2.75rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3.5rem);
+
+    border-radius: var(--radius-section);
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.92),
+            rgba(0, 0, 0, 0.7),
+            transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border: 1px solid var(--color-border-soft);
+
+    text-align: center;
+}
+
+/* Faixa topo */
+
+.badgeWrapper {
+    margin-bottom: 1.8rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.45rem 1.75rem;
+    border-radius: var(--radius-pill);
+
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    /* 🔸 texto dourado em vez de azul */
+    color: #facc15;
+
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 0.98),
+            rgba(15, 23, 42, 0.95),
+            rgba(0, 0, 0, 0.98));
+
+    box-shadow:
+        0 0 14px rgba(250, 204, 21, 0.9),
+        0 8px 26px rgba(0, 0, 0, 0.9);
+}
+
+/* Título e texto */
+
+.title {
+    margin: 0 0 1.6rem;
+    font-size: clamp(2rem, 4.4vw, 2.8rem);
+    line-height: 1.25;
+    font-weight: 800;
+
+    /* 👉 mesmo estilo do "Continental Cup" do Hero */
+    color: #22c55e;
+    text-shadow: 0 0 20px rgba(22, 163, 74, 0.9);
+}
+
+.textBlock {
+    max-width: 52rem;
+    margin: 0 auto 2.25rem;
+}
+
+.paragraph {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--color-text-main);
+}
+
+.paragraph+.paragraph {
+    margin-top: 0.9rem;
+}
+
+/* Botões principais */
+
+.mainActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.4rem;
+}
+
+.buttonPrimary,
+.buttonSecondary {
+    min-width: 11rem;
+    padding: 0.9rem 2.4rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+/* General info – dourado principal */
+
+.buttonSecondary {
+    background: var(--color-accent-gold);
+    color: #1c1917;
+    box-shadow:
+        0 16px 35px rgba(250, 204, 21, 0.6),
+        0 0 18px rgba(250, 204, 21, 0.85);
+}
+
+.buttonSecondary:hover {
+    background: #fbbf24;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow:
+        0 18px 45px rgba(250, 204, 21, 0.8),
+        0 0 24px rgba(250, 204, 21, 0.95);
+}
+
+/* Registration form – verde principal */
+
+.buttonPrimary {
+    background: #22c55e;
+    color: #022c22;
+    box-shadow:
+        0 16px 40px rgba(22, 163, 74, 0.8),
+        0 0 22px rgba(22, 163, 74, 0.85);
+}
+
+.buttonPrimary:hover {
+    background: #16a34a;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow:
+        0 18px 55px rgba(22, 163, 74, 0.95),
+        0 0 26px rgba(22, 163, 74, 1);
+}
+
+/* Nota + botões MAG/WAG */
+
+.note {
+    max-width: 52rem;
+    margin: 0 auto 2rem;
+
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-soft);
+}
+
+.categoryActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* base comum (layout, tipografia) */
+.categoryButton {
+    min-width: 6.5rem;
+    padding: 0.65rem 1.6rem;
+    border-radius: 999px;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+/* MAG – masculino, verde escuro */
+.categoryButtonMag {
+    border: 1px solid rgba(34, 197, 94, 0.7);
+    background: radial-gradient(circle at 50% 0%,
+            #022c22 0%,
+            #064e3b 100%);
+    color: #eafff5;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
+}
+
+.categoryButtonMag:hover {
+    border-color: rgba(74, 222, 128, 0.95);
+    background: radial-gradient(circle at 50% 0%,
+            #065f46 0%,
+            #10b981 100%);
+    color: #ecfdf3;
+
+    transform: translateY(-1px);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.95),
+        0 0 22px rgba(34, 197, 94, 0.95);
+}
+
+/* WAG – feminino, dourado/quente */
+.categoryButtonWag {
+    border: 1px solid rgba(250, 204, 21, 0.7);
+    background: radial-gradient(circle at 50% 0%,
+            #3b0a0a 0%,
+            #7f1d1d 100%);
+    color: #fef3c7;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
+}
+
+.categoryButtonWag:hover {
+    border-color: rgba(250, 204, 21, 0.95);
+    background: radial-gradient(circle at 50% 0%,
+            #78350f 0%,
+            #d97706 100%);
+    color: #fffbeb;
+
+    transform: translateY(-1px);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.95),
+        0 0 22px rgba(250, 204, 21, 0.95);
+}
+
+/* ---------- RESPONSIVO ---------- */
+
+@media (max-width: 768px) {
+    .inner {
+        width: min(100%, 100% - 1rem);
+        padding: 2.25rem 1.25rem 2.75rem;
+    }
+
+    .title {
+        font-size: clamp(1.7rem, 6vw, 2.2rem);
+    }
+
+    .paragraph {
+        font-size: 0.96rem;
+    }
+
+    .buttonPrimary,
+    .buttonSecondary {
+        width: 100%;
+        max-width: 16rem;
+    }
+}

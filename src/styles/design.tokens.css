@@ -1,4 +1,3 @@
-
 :root {
     /* ---------- PALETA CORE ---------- */
 
@@ -69,7 +68,8 @@
     /* ---------- GRADIENTES ---------- */
 
     /* Fundo principal da página (usado na Home) */
-    --gradient-main: radial-gradient(circle at 0% 0%,
+    --gradient-main:
+        radial-gradient(circle at 0% 0%,
             rgba(245, 245, 244, 0.12),
             transparent 55%),
         radial-gradient(circle at 100% 100%,
@@ -102,7 +102,8 @@
 
     /* ---------- LAYOUT / ESPAÇAMENTO ---------- */
 
-    --page-max-width: 72rem;
+    /* 82rem ≈ 1312px */
+    --page-max-width: 82rem;
     --space-page-block: 5rem;
     --space-page-inline: min(5vw, 3rem);
 

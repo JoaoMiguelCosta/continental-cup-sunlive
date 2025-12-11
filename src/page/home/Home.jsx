@@ -5,50 +5,35 @@
  *
  * - Header
  * - Hero
- * - Secção 1
- * - Secção 2
- * - Secção 3
- * - Secção 4
- * - Secção 5
- * - Secção 6
- * - Secção 7
+ * - Mensagem (Lucas)
+ * - Secção Competition (CUP)
+ * - Secção Venue (Velodrome of Sangalhos)
+ * - (restantes secções virão depois)
  */
 
-// import { HomeHeader } from "./components/HomeHeader.jsx";
-// import { HeroSection } from "./components/HeroSection.jsx";
-// import { SectionOne } from "./components/SectionOne.jsx";
-// import { SectionTwo } from "./components/SectionTwo.jsx";
-// import { SectionThree } from "./components/SectionThree.jsx";
-// import { SectionFour } from "./components/SectionFour.jsx";
-// import { SectionFive } from "./components/SectionFive.jsx";
-// import { SectionSix } from "./components/SectionSix.jsx";
-// import { SectionSeven } from "./components/SectionSeven.jsx";
-// import { HomeFooter } from "./components/HomeFooter.jsx";
-// // import { ScrollToTopButton } from "../../shared/components/ScrollToTopButton.jsx";
+import { HomeHeader } from "./components/Header/Header.jsx";
+import { Hero } from "./components/hero/Hero.jsx";
+import { MessageSection } from "./components/message/Message.jsx";
+import { CompetitionSection } from "./components/competition/Competition.jsx";
+import { VenueSection } from "./components/venue/Venue.jsx";
+import { HotelSection } from "./components/hotel/Hotel.jsx";
+import { SunliveSection } from "./components/sunlive/Sunlive.jsx";
 
 import styles from "./Home.module.css";
 
 export default function Home() {
   return (
     <main className={styles.page}>
-      {/* <HomeHeader />
-      <HeroSection />
+      <section className={styles.heroRegion}>
+        <HomeHeader />
+        <Hero />
+      </section>
 
-      <SectionOne />
-      <SectionTwo />
-      <SectionThree />
-      <SectionFour />
-      <SectionFive />
-      <SectionSix />
-      <SectionSeven />
-
-      <HomeFooter />
-
-      {/* botão flutuante para voltar ao topo */}
-      {/* <ScrollToTopButton /> */}
-      
-        Continental Cup · layout em construção.
-      
+      <MessageSection />
+      <CompetitionSection />
+      <VenueSection />
+      <HotelSection />
+      <SunliveSection />
     </main>
   );
 }

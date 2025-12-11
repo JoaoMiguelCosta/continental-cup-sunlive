@@ -1,0 +1,176 @@
+/* src/page/home/components/hero/Hero.module.css */
+
+/* Conteúdo do Hero por cima da imagem de fundo do heroRegion */
+
+.hero {
+    position: relative;
+    min-height: calc(100vh - 8rem); /* altura aproximada depois do header */
+
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    margin-top: var(--space-xl);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    width: 100%;
+    padding: 5rem 1.5rem 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* leve overlay para destacar o texto */
+    background: radial-gradient(circle at 50% 0%,
+            rgba(0, 0, 0, 0.35),
+            transparent 55%);
+}
+
+.content {
+    max-width: 46rem;
+    text-align: center;
+    color: var(--color-text-strong);
+}
+
+/* Títulos */
+
+.title {
+    margin: 0 0 1rem;
+    line-height: 1.05;
+}
+
+/* International – dourado simples */
+.titleLine {
+    display: block;
+    font-size: clamp(2.7rem, 5.6vw, 3.5rem);
+    font-weight: 700;
+    color: #facc15;
+    /* dourado quente */
+
+    text-shadow:
+        0 0 6px rgba(0, 0, 0, 0.85),
+        0 0 14px rgba(250, 204, 21, 0.8);
+}
+
+/* Continental Cup – mantém o verde neon */
+.titleLineHighlight {
+    display: block;
+    font-size: clamp(3.1rem, 6.6vw, 4.1rem);
+    font-weight: 800;
+    color: #22c55e;
+    text-shadow: 0 0 20px rgba(22, 163, 74, 0.9);
+}
+/* Texto complementar */
+
+.poweredBy {
+    margin: 0.7rem 0 0.3rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #f9fafb;
+    text-shadow:
+        0 0 6px rgba(0, 0, 0, 0.9),
+        0 0 14px rgba(15, 23, 42, 0.9);
+}
+
+
+
+.dates {
+    margin: 0.6rem 0 1.8rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fefce8;
+    text-shadow: var(--shadow-gold-glow);
+}
+
+/* Botões */
+
+.actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.buttonPrimary,
+.buttonSecondary {
+    min-width: 9rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+/* Poster – botão secundário */
+
+.buttonSecondary {
+    background: rgba(15, 23, 42, 0.8);
+    color: var(--color-text-main);
+    border-color: rgba(148, 163, 184, 0.5);
+}
+
+.buttonSecondary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+    border-color: var(--color-accent-gold-soft);
+}
+
+/* Registration – botão principal */
+
+.buttonPrimary {
+    background: #22c55e;
+    color: #022c22;
+    box-shadow: 0 16px 40px rgba(22, 163, 74, 0.7);
+}
+
+.buttonPrimary:hover {
+    background: #16a34a;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 18px 55px rgba(22, 163, 74, 0.9);
+}
+
+/* ---------- RESPONSIVO ---------- */
+
+@media (max-width: 768px) {
+    .hero {
+        margin-top: var(--space-lg);
+        min-height: calc(100vh - 7rem);
+    }
+
+    .overlay {
+        padding: 4.25rem 1.25rem 2.75rem;
+    }
+
+    .content {
+        max-width: 30rem;
+    }
+
+    .dates {
+        font-size: 1.15rem;
+    }
+
+    .actions {
+        gap: 0.75rem;
+    }
+
+    .buttonPrimary,
+    .buttonSecondary {
+        width: 100%;
+        max-width: 16rem;
+    }
+}

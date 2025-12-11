@@ -1,0 +1,123 @@
+/* src/page/home/components/message/Message.module.css */
+
+.section {
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Card com o texto da mensagem */
+.card {
+    width: 100%;
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.75rem, 5vw, 4rem) 3.75rem;
+
+    text-align: center;
+
+    /* 👉 mesmo gradiente do header */
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.92),
+            rgba(0, 0, 0, 0.7),
+            transparent);
+
+    border-radius: var(--radius-section);
+    border: 1px solid var(--color-border-soft);
+    box-shadow: var(--shadow-soft);
+}
+
+.paragraph {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text-main);
+}
+
+.paragraph+.paragraph {
+    margin-top: 1.6rem;
+}
+
+/* Bloco do autor abaixo, com avatar a sobrepor o card */
+
+.authorBlock {
+    margin-top: -3.2rem;
+    text-align: center;
+}
+
+/* anel com gradiente dourado/verde */
+.avatarRing {
+    width: 6.2rem;
+    height: 6.2rem;
+    margin-inline: auto;
+
+    border-radius: 999px;
+    padding: 3px;
+
+    background: linear-gradient(135deg,
+            var(--color-accent-gold),
+            #22c55e);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(34, 197, 94, 0.7);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatarInner {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+    background: #020617;
+}
+
+.avatarInner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.authorName {
+    margin-top: 0.8rem;
+    margin-bottom: 0.1rem;
+    /* 🔽 aproxima do cargo */
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #f9fafb;
+    text-shadow:
+        0 0 6px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(15, 23, 42, 0.9);
+}
+
+.authorRole {
+    margin-top: 0.05rem;
+    /* 🔽 ainda mais perto */
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #facc15;
+    text-shadow:
+        0 0 5px rgba(0, 0, 0, 0.85),
+        0 0 10px rgba(250, 204, 21, 0.7);
+}
+
+/* ---------- RESPONSIVO ---------- */
+
+@media (max-width: 768px) {
+    .card {
+        padding: 2.25rem 1.25rem 3.25rem;
+    }
+
+    .paragraph {
+        font-size: 0.98rem;
+    }
+
+    .avatarRing {
+        width: 5.4rem;
+        height: 5.4rem;
+    }
+}

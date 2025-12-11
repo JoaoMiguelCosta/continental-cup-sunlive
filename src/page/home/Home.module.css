@@ -4,62 +4,87 @@
     position: relative;
     min-height: 100vh;
 
-    /* Fundo coerente com o body, mas aqui garantimos que cobre tudo */
     background: var(--gradient-main);
-
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
 
-    /* Espaço para compensar o header FIXO no topo
-     Em baixo fica 0 para não haver espaço extra após o footer */
-    padding-block: var(--header-offset) 0;
-
+    padding: 0;
     overflow-x: hidden;
 }
 
-/*
- * Todos os blocos principais (header, secções, footer)
- * ficam centrados e com largura máxima.
- * O último filho (scroll-to-top) fica livre para ser fixed.
+/* 
+ * heroRegion:
+ * - tem a imagem de fundo
+ * - apanha HEADER + HERO
+ * - está limitada aos 1312px (82rem)
  */
-.page>*:not(:last-child) {
+.heroRegion {
+    width: min(var(--page-max-width), 100% - 0.75rem);
+    margin-top: 0;
+
+    border-radius: 0 0 var(--radius-section) var(--radius-section);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+
+    background-image:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.9)),
+        url("../../assets/backgrounds/foto-fundo-1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding-bottom: var(--space-xl);
+}
+
+/* Mais tarde, outras secções da página seguem o mesmo limite */
+
+.page>*:not(.heroRegion) {
     width: min(var(--page-max-width), 100% - 0.75rem);
     margin-inline: auto;
 }
 
-/* Espaçamento vertical entre os blocos principais
-   ❌ não aplica margem antes do footer */
-.page>*:not(:last-child)+*:not(:last-child):not(footer) {
+/* Espaçamento entre blocos depois do heroRegion */
+.page>.heroRegion+* {
     margin-top: var(--space-xl);
+}
+
+/* Placeholder (se ainda usares para debug) */
+.placeholder {
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    opacity: 0.8;
 }
 
 /* ---------- DESKTOP LARGO (>= 1200px) ---------- */
 @media (min-width: 1200px) {
-    .page {
-        padding-block: var(--header-offset) 0;
-    }
-
-    .page>*:not(:last-child) {
+    .heroRegion {
         width: min(var(--page-max-width), 100% - 2rem);
     }
 
-    .page>*:not(:last-child)+*:not(:last-child):not(footer) {
+    .page>*:not(.heroRegion) {
+        width: min(var(--page-max-width), 100% - 2rem);
+    }
+
+    .page>.heroRegion+* {
         margin-top: calc(var(--space-xl) * 1.5);
     }
 }
 
 /* ---------- MOBILE (<= 640px) ---------- */
 @media (max-width: 640px) {
-    .page {
-        padding-block: var(--header-offset) 0;
-    }
-
-    .page>*:not(:last-child) {
+    .heroRegion {
         width: min(100%, 100% - 1rem);
     }
 
-    .page>*:not(:last-child)+*:not(:last-child):not(footer) {
+    .page>*:not(.heroRegion) {
+        width: min(100%, 100% - 1rem);
+    }
+
+    .page>.heroRegion+* {
         margin-top: var(--space-md);
     }
 }

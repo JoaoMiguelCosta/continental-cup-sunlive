@@ -1,0 +1,197 @@
+/* src/page/home/components/sunlive/Sunlive.module.css */
+
+.section {
+    position: relative;
+    min-height: 60vh;
+
+    margin-top: var(--space-3xl);
+    margin-bottom: var(--space-3xl);
+
+    border-radius: var(--radius-section);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+
+    /* fundo piscina + overlay escuro */
+    background-image:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.92)),
+        url("../../../../assets/backgrounds/fundo-piscina.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+
+    padding: clamp(3rem, 7vw, 4.5rem) clamp(1.5rem, 6vw, 4.5rem);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner {
+    width: min(var(--page-max-width), 100% - 0.75rem);
+    margin-inline: auto;
+}
+
+/* Card principal (idêntico ao do Hotel, mas texto à esquerda) */
+
+.card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+
+    padding: clamp(2.25rem, 4vw, 2.9rem);
+    border-radius: var(--radius-section);
+
+  
+}
+
+/* Conteúdo textual */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    color: #f9fafb;
+}
+
+/* Título ao estilo Continental Cup */
+
+.title {
+    margin: 0 0 1.4rem;
+    font-size: clamp(2rem, 4.5vw, 2.7rem);
+    font-weight: 800;
+
+    color: #22c55e;
+    text-shadow:
+        0 0 18px rgba(22, 163, 74, 0.9),
+        0 0 40px rgba(22, 163, 74, 0.7);
+}
+
+.textBlock {
+    margin-bottom: 2rem;
+}
+
+.paragraph {
+    font-size: 1.02rem;
+    line-height: 1.9;
+    color: #f9fafb;
+    text-shadow:
+        0 0 7px rgba(0, 0, 0, 0.95),
+        0 0 12px rgba(15, 23, 42, 0.95);
+}
+/* Botão PDF */
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.buttonPrimary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 11rem;
+    padding: 0.9rem 2.4rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    background: var(--color-accent-gold);
+    color: #1c1917;
+    text-decoration: none;
+
+    box-shadow:
+        0 16px 35px rgba(250, 204, 21, 0.7),
+        0 0 26px rgba(250, 204, 21, 0.9);
+
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.buttonPrimary:hover {
+    background: #fbbf24;
+    transform: translateY(-1px) scale(1.03);
+    border-color: rgba(250, 250, 250, 0.85);
+    box-shadow:
+        0 18px 48px rgba(250, 204, 21, 0.95),
+        0 0 30px rgba(250, 204, 21, 1);
+}
+
+/* Vídeo à direita */
+
+.media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.videoFrame {
+    position: relative;
+    width: 100%;
+    max-width: 32rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+}
+
+.videoFrame::before {
+    content: "";
+    display: block;
+    padding-bottom: 56.25%;
+}
+
+.videoFrame iframe {
+    position: absolute;
+    inset: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------- RESPONSIVO ---------- */
+
+@media (max-width: 900px) {
+    .card {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 2rem 1.5rem;
+        gap: 1.75rem;
+    }
+
+    .content {
+        text-align: center;
+        align-items: center;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .overlay {
+        padding: 2.25rem 1rem 2.75rem;
+    }
+
+    .videoFrame {
+        max-width: 100%;
+    }
+}
