@@ -1,0 +1,65 @@
+/* src/pages/home/Home.module.css */
+
+.page {
+    position: relative;
+    min-height: 100vh;
+
+    /* Fundo coerente com o body, mas aqui garantimos que cobre tudo */
+    background: var(--gradient-main);
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    /* Espaço para compensar o header FIXO no topo
+     Em baixo fica 0 para não haver espaço extra após o footer */
+    padding-block: var(--header-offset) 0;
+
+    overflow-x: hidden;
+}
+
+/*
+ * Todos os blocos principais (header, secções, footer)
+ * ficam centrados e com largura máxima.
+ * O último filho (scroll-to-top) fica livre para ser fixed.
+ */
+.page>*:not(:last-child) {
+    width: min(var(--page-max-width), 100% - 0.75rem);
+    margin-inline: auto;
+}
+
+/* Espaçamento vertical entre os blocos principais
+   ❌ não aplica margem antes do footer */
+.page>*:not(:last-child)+*:not(:last-child):not(footer) {
+    margin-top: var(--space-xl);
+}
+
+/* ---------- DESKTOP LARGO (>= 1200px) ---------- */
+@media (min-width: 1200px) {
+    .page {
+        padding-block: var(--header-offset) 0;
+    }
+
+    .page>*:not(:last-child) {
+        width: min(var(--page-max-width), 100% - 2rem);
+    }
+
+    .page>*:not(:last-child)+*:not(:last-child):not(footer) {
+        margin-top: calc(var(--space-xl) * 1.5);
+    }
+}
+
+/* ---------- MOBILE (<= 640px) ---------- */
+@media (max-width: 640px) {
+    .page {
+        padding-block: var(--header-offset) 0;
+    }
+
+    .page>*:not(:last-child) {
+        width: min(100%, 100% - 1rem);
+    }
+
+    .page>*:not(:last-child)+*:not(:last-child):not(footer) {
+        margin-top: var(--space-md);
+    }
+}
