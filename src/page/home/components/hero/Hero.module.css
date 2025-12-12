@@ -23,10 +23,7 @@
     align-items: center;
     justify-content: center;
 
-    /* leve overlay para destacar o texto */
-    background: radial-gradient(circle at 50% 0%,
-            rgba(0, 0, 0, 0.35),
-            transparent 55%);
+
 }
 
 .content {

@@ -1,5 +1,10 @@
 // src/config/content/home.content.js
 import sunliveGroupLogo from "../../assets/logos/sunlive-group.png";
+import continentalCupLogo from "../../assets/logos/continental-cup.png";
+import velodromoLogo from "../../assets/logos/velodromo.png";
+import anadiaLogo from "../../assets/logos/anadia.png";
+import estalagemLogo from "../../assets/logos/estalagem.png";
+
 import heroBackground from "../../assets/backgrounds/foto-fundo-1.png";
 import lucasPhoto from "../../assets/person/lucas.jpg";
 import velodromeBackground from "../../assets/backgrounds/fundo-velodromo.jpg";
@@ -53,14 +58,8 @@ export const homeContent = {
     location: "ANADIA – PORTUGAL",
     dates: "21st – 23rd November, 2026",
     ctas: {
-      poster: {
-        id: "poster",
-        label: "Poster",
-      },
-      registration: {
-        id: "registration",
-        label: "Registration",
-      },
+      poster: { id: "poster", label: "Poster" },
+      registration: { id: "registration", label: "Registration" },
     },
   },
 
@@ -89,27 +88,31 @@ export const homeContent = {
       "Don’t miss this opportunity to witness top-level athletes in action and celebrate the artistry and skill of gymnastics alongside an electrifying crowd.",
     ],
     mainCtas: {
-      generalInfo: {
-        id: "general-info",
-        label: "General info",
-      },
-      registrationForm: {
-        id: "registration-form",
-        label: "Registration form",
-      },
+      generalInfo: { id: "general-info", label: "General info" },
+      registrationForm: { id: "registration-form", label: "Registration form" },
     },
     downloadNote:
       "After filling out the registration form, download the files (WAG or MAG) and send them, properly completed, to malta@sunlive.pt. Thank you.",
     categoryCtas: {
-      mag: {
-        id: "mag-file",
-        label: "MAG",
-      },
-      wag: {
-        id: "wag-file",
-        label: "WAG",
-      },
+      mag: { id: "mag-file", label: "MAG" },
+      wag: { id: "wag-file", label: "WAG" },
     },
+  },
+
+  // ✅ Organization / Partners
+  orgPartnersSection: {
+    id: "org-partners",
+    organizationTitle: "ORGANIZATION",
+    partnersTitle: "PARTNERS",
+    organization: [
+      { src: sunliveGroupLogo, alt: "Sunlive Group" },
+      { src: continentalCupLogo, alt: "Continental Cup" },
+    ],
+    partners: [
+      { src: velodromoLogo, alt: "Velodromo" },
+      { src: anadiaLogo, alt: "Anadia" },
+      { src: estalagemLogo, alt: "Estalagem" },
+    ],
   },
 
   venueSection: {
@@ -175,5 +178,64 @@ export const homeContent = {
       label: "Presentation PDF",
       href: "/books/sunlive_apresentation.pdf",
     },
+  },
+
+  // ✅ CONTACTS
+  contactsSection: {
+    id: "contacts",
+
+    address: {
+      title: "Sunlive Group Address",
+      lines: ["Rua Narciso da Marça", "3780-101 Sangalhos"],
+    },
+
+    eventManager: {
+      title: "Event Manager",
+      name: "Francesca Borg",
+      phoneLabel: "Phone:",
+      phoneValue: "(+356) 99164245",
+      emailLabel: "E-mail:",
+      emailValue: "malta@sunlive.pt",
+    },
+
+    links: {
+      title: "Links",
+      items: [
+        { label: "Cup", type: "internal", targetId: "cup" },
+        {
+          label: "Sunlive Group",
+          type: "external",
+          href: "https://www.facebook.com/sunlive07/",
+        },
+        {
+          label: "Sangalhos Hotel",
+          type: "external",
+          href: "https://www.estalagem.sunlive.pt/",
+        },
+        {
+          label: "Instagram",
+          type: "external",
+          href: "https://www.instagram.com/sunlive.group/",
+        },
+      ],
+    },
+
+    gdpr: {
+      label: "GDPR – General Data Protection Regulation",
+      href: "https://sunlive.pt/en/rgpd",
+    },
+
+    map: {
+      title: "Sunlive – Investimentos Imobiliários",
+      src: "https://www.openstreetmap.org/export/embed.html?bbox=-8.469518%2C40.466923%2C-8.449518%2C40.486923&layer=mapnik&marker=40.476923%2C-8.459518",
+    },
+  },
+
+  // ✅ FOOTER
+  footer: {
+    id: "footer",
+    siteLabel: "www.continentalcup.sunlive.pt",
+    homeTargetId: "home",
+    copyright: "© Copyright 2026 Sunlive - All Rights Reserved",
   },
 };

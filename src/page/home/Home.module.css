@@ -11,52 +11,105 @@
 
     padding: 0;
     overflow-x: hidden;
+
+    /* ✅ espaçamento uniforme entre todas as secções */
+    gap: var(--space-page-block);
+    /* 5rem */
 }
 
-/* 
+/*
  * heroRegion:
- * - tem a imagem de fundo
+ * - tem a imagem de fundo (alterna entre 2 imagens)
  * - apanha HEADER + HERO
  * - está limitada aos 1312px (82rem)
+ *
+ * ✅ como o header é FIXO, empurramos o conteúdo para baixo
  */
 .heroRegion {
     width: min(var(--page-max-width), 100% - 0.75rem);
     margin-top: 0;
 
+    position: relative;
     border-radius: 0 0 var(--radius-section) var(--radius-section);
     overflow: hidden;
     box-shadow: var(--shadow-soft);
 
-    background-image:
-        linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.35),
-            rgba(0, 0, 0, 0.9)),
-        url("../../assets/backgrounds/foto-fundo-1.png");
+    background: none;
+
+    /* ✅ espaço para o header fixo */
+    padding-top: calc(var(--camp-header-offset) + 1rem);
+}
+
+/* ✅ garante que Header + Hero ficam por cima do fundo */
+.heroRegion>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* ✅ camadas de fundo */
+.heroRegion::before,
+.heroRegion::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    padding-bottom: var(--space-xl);
 }
 
-/* Mais tarde, outras secções da página seguem o mesmo limite */
+/* foto 1 (base) */
+.heroRegion::before {
+    background-image:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.12),
+            rgba(0, 0, 0, 0.65)),
+        url("../../assets/backgrounds/foto-fundo-1.png");
+}
 
+/* foto 2 (por cima, com alternância) */
+.heroRegion::after {
+    background-image:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.12),
+            rgba(0, 0, 0, 0.65)),
+        url("../../assets/backgrounds/foto-fundo-2.png");
+
+    opacity: 0;
+    animation: heroSwap 2s infinite;
+    /* 1s + 1s */
+}
+
+@keyframes heroSwap {
+
+    0%,
+    49% {
+        opacity: 0;
+    }
+
+    50%,
+    99% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .heroRegion::after {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+/* ✅ todas as outras secções seguem o mesmo limite */
 .page>*:not(.heroRegion) {
     width: min(var(--page-max-width), 100% - 0.75rem);
     margin-inline: auto;
-}
-
-/* Espaçamento entre blocos depois do heroRegion */
-.page>.heroRegion+* {
-    margin-top: var(--space-xl);
-}
-
-/* Placeholder (se ainda usares para debug) */
-.placeholder {
-    padding: 2rem;
-    text-align: center;
-    font-size: 0.95rem;
-    opacity: 0.8;
 }
 
 /* ---------- DESKTOP LARGO (>= 1200px) ---------- */
@@ -67,10 +120,6 @@
 
     .page>*:not(.heroRegion) {
         width: min(var(--page-max-width), 100% - 2rem);
-    }
-
-    .page>.heroRegion+* {
-        margin-top: calc(var(--space-xl) * 1.5);
     }
 }
 
@@ -84,7 +133,8 @@
         width: min(100%, 100% - 1rem);
     }
 
-    .page>.heroRegion+* {
-        margin-top: var(--space-md);
+    /* ✅ gap mais pequeno no mobile */
+    .page {
+        gap: var(--space-xl);
     }
 }
