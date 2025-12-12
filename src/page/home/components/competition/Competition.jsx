@@ -1,12 +1,17 @@
 // src/page/home/components/competition/Competition.jsx
 
+import { useState } from "react";
 import { homeContent } from "../../../../config/content/home.content.js";
+
+import { RegistrationFormModal } from "../registrationForm/RegistrationFormModal.jsx";
 import styles from "./Competition.module.css";
 
 export function CompetitionSection() {
   const { competitionSection } = homeContent;
   const { id, badge, title, paragraphs, mainCtas, downloadNote, categoryCtas } =
     competitionSection;
+
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
     <section id={id} className={styles.section}>
@@ -26,11 +31,12 @@ export function CompetitionSection() {
         </div>
 
         <div className={styles.mainActions}>
-          <button type="button" className={styles.buttonSecondary}>
-            {mainCtas.generalInfo.label}
-          </button>
-
-          <button type="button" className={styles.buttonPrimary}>
+          {/* ✅ Só fica 1 botão (dourado) e abre o formulário */}
+          <button
+            type="button"
+            className={styles.buttonMain}
+            onClick={() => setIsFormOpen(true)}
+          >
             {mainCtas.registrationForm.label}
           </button>
         </div>
@@ -44,6 +50,7 @@ export function CompetitionSection() {
           >
             {categoryCtas.mag.label}
           </button>
+
           <button
             type="button"
             className={`${styles.categoryButton} ${styles.categoryButtonWag}`}
@@ -52,6 +59,13 @@ export function CompetitionSection() {
           </button>
         </div>
       </div>
+
+      {/* ✅ Modal do formulário (centrado e acima do header) */}
+      <RegistrationFormModal
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        content={competitionSection.registrationModal}
+      />
     </section>
   );
 }

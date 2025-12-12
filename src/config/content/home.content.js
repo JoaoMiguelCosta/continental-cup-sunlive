@@ -11,6 +11,8 @@ import velodromeBackground from "../../assets/backgrounds/fundo-velodromo.jpg";
 import hotelBackground from "../../assets/backgrounds/fundo-entrada-estalagem.jpg";
 import sunliveBackground from "../../assets/backgrounds/fundo-piscina.jpg";
 
+import posterImage from "../../assets/poster/poster.png";
+
 export const homeContent = {
   header: {
     logo: {
@@ -56,10 +58,14 @@ export const homeContent = {
     titleLines: ["International", "Continental Cup"],
     poweredBy: "powered by Sunlive Malta",
     location: "ANADIA – PORTUGAL",
-    dates: "21st – 23rd November, 2026",
+    dates: "27th – 29th November, 2026",
     ctas: {
       poster: { id: "poster", label: "Poster" },
       registration: { id: "registration", label: "Registration" },
+    },
+    poster: {
+      src: posterImage,
+      alt: "Continental Cup poster",
     },
   },
 
@@ -84,22 +90,113 @@ export const homeContent = {
     badge: "Another unique gymnastics experience!!!",
     title: "The Continental Cup 2026 MAG and WAG International competition",
     paragraphs: [
-      "Get ready for an exciting event in the world of gymnastics! The Continental Cup MAG and WAG international competition is just around the corner, taking place from November 21st to 23rd.",
+      "Get ready for an exciting event in the world of gymnastics! The Continental Cup MAG and WAG international competition is just around the corner, taking place from November 27th to 29th.",
       "Don’t miss this opportunity to witness top-level athletes in action and celebrate the artistry and skill of gymnastics alongside an electrifying crowd.",
     ],
+
+    // ✅ só 1 botão (e com “presença” tipo o antigo General info)
     mainCtas: {
-      generalInfo: { id: "general-info", label: "General info" },
       registrationForm: { id: "registration-form", label: "Registration form" },
     },
+
     downloadNote:
       "After filling out the registration form, download the files (WAG or MAG) and send them, properly completed, to malta@sunlive.pt. Thank you.",
+
     categoryCtas: {
       mag: { id: "mag-file", label: "MAG" },
       wag: { id: "wag-file", label: "WAG" },
     },
+
+    // ✅ conteúdo do modal do formulário
+    registrationModal: {
+      title: "Sunlive International Continental Cup 2026",
+      subtitle: "Anadia – PORTUGAL | 27th – 29th November, 2026",
+      sections: [
+        {
+          title: "Delegation Info",
+          fields: [
+            {
+              name: "federationClub",
+              label: "Federation / Club",
+              type: "text",
+              required: true,
+            },
+            { name: "country", label: "Country", type: "text", required: true },
+          ],
+        },
+        {
+          title: "Transport Info",
+          fields: [
+            {
+              name: "transport",
+              label: "Transport",
+              type: "radio",
+              required: true,
+              options: [
+                { value: "airplane", label: "Airplane" },
+                { value: "car", label: "Car" },
+              ],
+            },
+            {
+              name: "flightNrArrival",
+              label: "Flight Nr Arrival",
+              type: "text",
+              required: true,
+            },
+            {
+              name: "flightNrDeparture",
+              label: "Flight Nr Departure",
+              type: "text",
+              required: true,
+            },
+            {
+              name: "arrivalTime",
+              label: "Arrival Time",
+              type: "time",
+              required: true,
+            },
+            {
+              name: "departureTime",
+              label: "Departure Time",
+              type: "time",
+              required: true,
+            },
+            {
+              name: "dayOfArrival",
+              label: "Day of Arrival",
+              type: "date",
+              required: true,
+            },
+            {
+              name: "dayOfDeparture",
+              label: "Day of Departure",
+              type: "date",
+              required: true,
+            },
+          ],
+        },
+        {
+          title: "Personal contacts",
+          fields: [
+            {
+              name: "contactName",
+              label: "Name",
+              type: "text",
+              required: true,
+            },
+            {
+              name: "phoneNumber",
+              label: "Phone number (country code) phone number",
+              type: "tel",
+              required: true,
+            },
+            { name: "email", label: "Email", type: "email", required: false },
+          ],
+        },
+      ],
+    },
   },
 
-  // ✅ Organization / Partners
   orgPartnersSection: {
     id: "org-partners",
     organizationTitle: "ORGANIZATION",
@@ -180,15 +277,12 @@ export const homeContent = {
     },
   },
 
-  // ✅ CONTACTS
   contactsSection: {
     id: "contacts",
-
     address: {
       title: "Sunlive Group Address",
       lines: ["Rua Narciso da Marça", "3780-101 Sangalhos"],
     },
-
     eventManager: {
       title: "Event Manager",
       name: "Francesca Borg",
@@ -197,7 +291,6 @@ export const homeContent = {
       emailLabel: "E-mail:",
       emailValue: "malta@sunlive.pt",
     },
-
     links: {
       title: "Links",
       items: [
@@ -219,19 +312,16 @@ export const homeContent = {
         },
       ],
     },
-
     gdpr: {
       label: "GDPR – General Data Protection Regulation",
       href: "https://sunlive.pt/en/rgpd",
     },
-
     map: {
       title: "Sunlive – Investimentos Imobiliários",
       src: "https://www.openstreetmap.org/export/embed.html?bbox=-8.469518%2C40.466923%2C-8.449518%2C40.486923&layer=mapnik&marker=40.476923%2C-8.459518",
     },
   },
 
-  // ✅ FOOTER
   footer: {
     id: "footer",
     siteLabel: "www.continentalcup.sunlive.pt",
