@@ -94,7 +94,6 @@ export const homeContent = {
       "Don’t miss this opportunity to witness top-level athletes in action and celebrate the artistry and skill of gymnastics alongside an electrifying crowd.",
     ],
 
-    // ✅ só 1 botão (e com “presença” tipo o antigo General info)
     mainCtas: {
       registrationForm: { id: "registration-form", label: "Registration form" },
     },
@@ -102,12 +101,22 @@ export const homeContent = {
     downloadNote:
       "After filling out the registration form, download the files (WAG or MAG) and send them, properly completed, to malta@sunlive.pt. Thank you.",
 
+    // ✅ agora com links para os zips em /public/downloads
     categoryCtas: {
-      mag: { id: "mag-file", label: "MAG" },
-      wag: { id: "wag-file", label: "WAG" },
+      mag: {
+        id: "mag-file",
+        label: "MAG",
+        href: "/downloads/continental-cup-2026-mag.zip.zip",
+        filename: "continental-cup-2026-mag.zip.zip",
+      },
+      wag: {
+        id: "wag-file",
+        label: "WAG",
+        href: "/downloads/continental-cup-2026-wag.zip.zip",
+        filename: "continental-cup-2026-wag.zip.zip",
+      },
     },
 
-    // ✅ conteúdo do modal do formulário
     registrationModal: {
       title: "Sunlive International Continental Cup 2026",
       subtitle: "Anadia – PORTUGAL | 27th – 29th November, 2026",

@@ -31,6 +31,24 @@ function humanTransport(value) {
   return value || "";
 }
 
+// ✅ DD-MM-YYYY HH:mm (Europe/Lisbon)
+function formatSubmittedAt(isoString) {
+  const d = new Date(isoString);
+
+  const parts = new Intl.DateTimeFormat("pt-PT", {
+    timeZone: "Europe/Lisbon",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(d);
+
+  const map = Object.fromEntries(parts.map((p) => [p.type, p.value]));
+  return `${map.day}-${map.month}-${map.year} ${map.hour}:${map.minute}`;
+}
+
 function buildRow(reg) {
   const d = reg.data || {};
   const extras = { ...d };
@@ -43,11 +61,11 @@ function buildRow(reg) {
 
   const transport = pick("transport");
 
-  // colunas principais (legível no Sheets)
+  // ✅ já NÃO envia: reg.id, reg.submittedAt (ISO)
+  // ✅ envia 1ª coluna: data/hora formatada
   const row = [
-    reg.id,
-    reg.submittedAt,
-    reg.form,
+    formatSubmittedAt(reg.submittedAt),
+    "27th – 29th November",
 
     pick("federationClub"),
     pick("country"),
@@ -65,9 +83,7 @@ function buildRow(reg) {
     pick("email"),
   ];
 
-  // não perder dados se aparecerem fields novos no futuro
   row.push(Object.keys(extras).length ? JSON.stringify(extras) : "");
-
   return row;
 }
 

@@ -31,7 +31,6 @@ export function CompetitionSection() {
         </div>
 
         <div className={styles.mainActions}>
-          {/* ✅ Só fica 1 botão (dourado) e abre o formulário */}
           <button
             type="button"
             className={styles.buttonMain}
@@ -44,23 +43,24 @@ export function CompetitionSection() {
         <p className={styles.note}>{downloadNote}</p>
 
         <div className={styles.categoryActions}>
-          <button
-            type="button"
+          <a
+            href={categoryCtas.mag.href}
+            download={categoryCtas.mag.filename}
             className={`${styles.categoryButton} ${styles.categoryButtonMag}`}
           >
             {categoryCtas.mag.label}
-          </button>
+          </a>
 
-          <button
-            type="button"
+          <a
+            href={categoryCtas.wag.href}
+            download={categoryCtas.wag.filename}
             className={`${styles.categoryButton} ${styles.categoryButtonWag}`}
           >
             {categoryCtas.wag.label}
-          </button>
+          </a>
         </div>
       </div>
 
-      {/* ✅ Modal do formulário (centrado e acima do header) */}
       <RegistrationFormModal
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}
