@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import styles from "./RegistrationFormModal.module.css";
+import { submitCompetitionRegistration } from "../../../../shared/api/registrations.js"
 
 function buildInitialValues(sections) {
   const values = {};
@@ -7,6 +8,16 @@ function buildInitialValues(sections) {
     for (const f of s.fields) values[f.name] = "";
   }
   return values;
+}
+
+function mapBackendDetailsToErrors(details) {
+  if (!Array.isArray(details)) return {};
+  const next = {};
+  for (const d of details) {
+    if (!d?.field) continue;
+    next[d.field] = d.message || "Invalid";
+  }
+  return next;
 }
 
 export function RegistrationFormModal({ isOpen, onClose, content }) {
@@ -18,7 +29,9 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
 
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
+  const [serverError, setServerError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -41,19 +54,22 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
     if (!isOpen) return;
     setValues(initialValues);
     setErrors({});
+    setServerError("");
     setSubmitted(false);
+    setIsSubmitting(false);
   }, [isOpen, initialValues]);
 
   const setField = (name, value) => {
     setValues((v) => ({ ...v, [name]: value }));
 
-    // limpa erro do campo ao editar
     setErrors((e) => {
       if (!e[name]) return e;
       const copy = { ...e };
       delete copy[name];
       return copy;
     });
+
+    if (serverError) setServerError("");
   };
 
   const validate = () => {
@@ -76,7 +92,6 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
     return Object.keys(nextErrors).length === 0;
   };
 
-  // ✅ Submit só ativa se o form estiver válido (em tempo real)
   const isFormValid = useMemo(() => {
     for (const s of sections) {
       for (const f of s.fields) {
@@ -95,10 +110,25 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
 
   if (!isOpen) return null;
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    setServerError("");
+
     if (!validate()) return;
-    setSubmitted(true);
+
+    try {
+      setIsSubmitting(true);
+      await submitCompetitionRegistration(values);
+      setSubmitted(true);
+    } catch (err) {
+      const fieldErrors = mapBackendDetailsToErrors(err?.details);
+      if (Object.keys(fieldErrors).length) {
+        setErrors((prev) => ({ ...prev, ...fieldErrors }));
+      }
+      setServerError(err?.message || "Submission failed");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const onBackdropMouseDown = (e) => {
@@ -120,6 +150,7 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
             onClick={onClose}
             aria-label="Close form"
             title="Close"
+            disabled={isSubmitting}
           >
             ×
           </button>
@@ -130,8 +161,7 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
             <div className={styles.success}>
               <p className={styles.successTitle}>✅ Submitted</p>
               <p className={styles.successText}>
-                Your registration was captured locally. Next step: connect this
-                to your backend/email.
+                Your registration was submitted successfully.
               </p>
 
               <div className={styles.actions}>
@@ -146,6 +176,12 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
             </div>
           ) : (
             <form onSubmit={onSubmit} className={styles.form}>
+              {serverError ? (
+                <p className={styles.serverError} role="alert">
+                  {serverError}
+                </p>
+              ) : null}
+
               {sections.map((section) => (
                 <div key={section.title} className={styles.section}>
                   <h3 className={styles.sectionTitle}>{section.title}</h3>
@@ -189,6 +225,7 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
                                     onChange={(e) =>
                                       setField(f.name, e.target.value)
                                     }
+                                    disabled={isSubmitting}
                                   />
                                   <span>{opt.label}</span>
                                 </label>
@@ -223,6 +260,7 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
                             onChange={(e) => setField(f.name, e.target.value)}
                             required={Boolean(f.required)}
                             autoComplete="off"
+                            disabled={isSubmitting}
                           />
                         </div>
                       );
@@ -236,6 +274,7 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
                   type="button"
                   className={styles.secondaryBtn}
                   onClick={onClose}
+                  disabled={isSubmitting}
                 >
                   Cancel
                 </button>
@@ -243,15 +282,17 @@ export function RegistrationFormModal({ isOpen, onClose, content }) {
                 <button
                   type="submit"
                   className={styles.primaryBtn}
-                  disabled={!isFormValid}
-                  aria-disabled={!isFormValid}
+                  disabled={!isFormValid || isSubmitting}
+                  aria-disabled={!isFormValid || isSubmitting}
                   title={
                     !isFormValid
                       ? "Preenche todos os campos obrigatórios"
-                      : "Submit"
+                      : isSubmitting
+                        ? "A enviar..."
+                        : "Submit"
                   }
                 >
-                  Submit
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </form>
