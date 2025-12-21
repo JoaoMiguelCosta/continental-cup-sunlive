@@ -106,14 +106,14 @@ export const homeContent = {
       mag: {
         id: "mag-file",
         label: "MAG",
-        href: "/downloads/continental-cup-2026-mag.zip.zip",
-        filename: "continental-cup-2026-mag.zip.zip",
+        href: "/downloads/continental-cup-2026-mag.zip",
+        filename: "Continental Cup 2026 - MAG",
       },
       wag: {
         id: "wag-file",
         label: "WAG",
-        href: "/downloads/continental-cup-2026-wag.zip.zip",
-        filename: "continental-cup-2026-wag.zip.zip",
+        href: "/downloads/continental-cup-2026-wag.zip",
+        filename: "Continental Cup 2026 - WAG",
       },
     },
 
