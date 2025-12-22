@@ -1,25 +1,16 @@
-/* src/page/home/components/message/Message.module.css */
-
 .section {
- 
-
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Card com o texto da mensagem */
 .card {
     width: 100%;
-    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.75rem, 5vw, 4rem) 3.75rem;
+    padding: clamp(2.1rem, 5vw, 3.5rem) clamp(1.1rem, 5vw, 4rem) 3.75rem;
 
     text-align: center;
 
-    /* 👉 mesmo gradiente do header */
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.92),
-            rgba(0, 0, 0, 0.7),
-            transparent);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.7), transparent);
 
     border-radius: var(--radius-section);
     border: 1px solid var(--color-border-soft);
@@ -36,14 +27,11 @@
     margin-top: 1.6rem;
 }
 
-/* Bloco do autor abaixo, com avatar a sobrepor o card */
-
 .authorBlock {
     margin-top: -3.2rem;
     text-align: center;
 }
 
-/* anel com gradiente dourado/verde */
 .avatarRing {
     width: 6.2rem;
     height: 6.2rem;
@@ -52,12 +40,8 @@
     border-radius: 999px;
     padding: 3px;
 
-    background: linear-gradient(135deg,
-            var(--color-accent-gold),
-            #22c55e);
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.8),
-        0 0 25px rgba(34, 197, 94, 0.7);
+    background: linear-gradient(135deg, var(--color-accent-gold), #22c55e);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(34, 197, 94, 0.7);
 
     display: flex;
     align-items: center;
@@ -82,29 +66,21 @@
 .authorName {
     margin-top: 0.8rem;
     margin-bottom: 0.1rem;
-    /* 🔽 aproxima do cargo */
     font-size: 1.1rem;
     font-weight: 700;
     color: #f9fafb;
-    text-shadow:
-        0 0 6px rgba(0, 0, 0, 0.9),
-        0 0 12px rgba(15, 23, 42, 0.9);
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9), 0 0 12px rgba(15, 23, 42, 0.9);
 }
 
 .authorRole {
     margin-top: 0.05rem;
-    /* 🔽 ainda mais perto */
     font-size: 0.9rem;
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #facc15;
-    text-shadow:
-        0 0 5px rgba(0, 0, 0, 0.85),
-        0 0 10px rgba(250, 204, 21, 0.7);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.85), 0 0 10px rgba(250, 204, 21, 0.7);
 }
-
-/* ---------- RESPONSIVO ---------- */
 
 @media (max-width: 768px) {
     .card {
@@ -118,5 +94,15 @@
     .avatarRing {
         width: 5.4rem;
         height: 5.4rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .card {
+        padding: 2.05rem 1.05rem 3.15rem;
+    }
+
+    .authorRole {
+        letter-spacing: 0.14em;
     }
 }

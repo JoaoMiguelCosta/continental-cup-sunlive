@@ -1,6 +1,6 @@
 .hero {
     position: relative;
-    min-height: calc(100vh - 8rem);
+    min-height: calc(100dvh - 8rem);
 
     max-width: var(--page-max-width);
     margin: 0 auto;
@@ -13,7 +13,7 @@
 
 .overlay {
     width: 100%;
-    padding: 5rem 1.5rem 3rem;
+    padding: clamp(3.2rem, 7vw, 5rem) clamp(1.05rem, 4vw, 1.5rem) 3rem;
 
     display: flex;
     align-items: center;
@@ -33,20 +33,17 @@
 
 .titleLine {
     display: block;
-    font-size: clamp(2.7rem, 5.6vw, 3.5rem);
+    font-size: clamp(2.2rem, 5.6vw, 3.5rem);
     font-weight: 700;
     color: #facc15;
-
-    text-shadow: 0 0 6px rgba(0, 0, 0, 0.85),
-        0 0 14px rgba(250, 204, 21, 0.8);
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.85), 0 0 14px rgba(250, 204, 21, 0.8);
 }
 
 .titleLineHighlight {
     display: block;
-    font-size: clamp(3.1rem, 6.6vw, 4.1rem);
+    font-size: clamp(2.55rem, 6.6vw, 4.1rem);
     font-weight: 800;
     color: #22c55e;
-
     text-shadow: 0 0 20px rgba(22, 163, 74, 0.9);
 }
 
@@ -55,9 +52,7 @@
     font-size: 1.15rem;
     font-weight: 600;
     color: #f9fafb;
-
-    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9),
-        0 0 14px rgba(15, 23, 42, 0.9);
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9), 0 0 14px rgba(15, 23, 42, 0.9);
 }
 
 .location {
@@ -73,7 +68,6 @@
     font-size: 1.3rem;
     font-weight: 700;
     color: #fefce8;
-
     text-shadow: var(--shadow-gold-glow);
 }
 
@@ -99,11 +93,8 @@
     font-weight: 600;
 
     cursor: pointer;
-    transition: transform var(--transition-fast),
-        box-shadow var(--transition-fast),
-        background-color var(--transition-fast),
-        color var(--transition-fast),
-        border-color var(--transition-fast);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .buttonSecondary {
@@ -132,14 +123,11 @@
 
 /* ---------- RESPONSIVO ---------- */
 
+/* tablet/stack (mantém o teu comportamento) */
 @media (max-width: 768px) {
     .hero {
         margin-top: var(--space-lg);
-        min-height: calc(100vh - 7rem);
-    }
-
-    .overlay {
-        padding: 4.25rem 1.25rem 2.75rem;
+        min-height: calc(100dvh - 7rem);
     }
 
     .content {
@@ -158,5 +146,109 @@
     .buttonSecondary {
         width: 100%;
         max-width: 16rem;
+    }
+}
+
+/* ✅ ajuste proporcional antes do micro */
+@media (max-width: 520px) {
+    .hero {
+        min-height: calc(100dvh - 6.7rem);
+        margin-top: var(--space-md);
+    }
+
+    .overlay {
+        padding: 3.4rem 1rem 2.25rem;
+    }
+
+    .content {
+        max-width: 26rem;
+    }
+
+    .titleLine {
+        font-size: clamp(2.05rem, 7.2vw, 2.6rem);
+    }
+
+    .titleLineHighlight {
+        font-size: clamp(2.35rem, 8vw, 3rem);
+    }
+
+    .poweredBy {
+        font-size: 1rem;
+    }
+
+    .dates {
+        font-size: 1.1rem;
+    }
+
+    .buttonPrimary,
+    .buttonSecondary {
+        padding: 0.75rem 1.4rem;
+        min-width: 8.5rem;
+        font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .overlay {
+        padding: 3.05rem 0.95rem 2.1rem;
+    }
+
+    .content {
+        max-width: 22rem;
+    }
+
+    .poweredBy {
+        font-size: 0.95rem;
+    }
+
+    .location {
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+    }
+
+    .dates {
+        font-size: 1.02rem;
+    }
+
+    .actions {
+        gap: 0.65rem;
+    }
+
+    .buttonPrimary,
+    .buttonSecondary {
+        max-width: 15rem;
+        padding: 0.72rem 1.2rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .hero {
+        min-height: calc(100dvh - 6.4rem);
+    }
+
+    .overlay {
+        padding: 2.85rem 0.85rem 2rem;
+    }
+
+    .titleLine {
+        font-size: 2rem;
+    }
+
+    .titleLineHighlight {
+        font-size: 2.35rem;
+    }
+
+    .poweredBy {
+        font-size: 0.92rem;
+    }
+
+    .dates {
+        font-size: 0.98rem;
+    }
+
+    .buttonPrimary,
+    .buttonSecondary {
+        font-size: 0.8rem;
+        letter-spacing: 0.11em;
     }
 }

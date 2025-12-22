@@ -1,25 +1,17 @@
-/* src/pages/home/components/HomeOrgPartnersSection/HomeOrgPartnersSection.module.css */
-
 .section {
     scroll-margin-top: var(--camp-header-offset, 5rem);
-
-
     display: flex;
     justify-content: center;
- 
 }
 
 .inner {
-    width: min(var(--page-max-width), 100% - 0.75rem);
+    width: min(var(--page-max-width), 100%);
     margin-inline: auto;
 
-    padding: clamp(2.25rem, 5vw, 3.25rem) clamp(1.25rem, 4vw, 3rem);
+    padding: clamp(2rem, 5vw, 3.25rem) clamp(1.05rem, 4vw, 3rem);
     border-radius: var(--radius-section);
 
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.92),
-            rgba(0, 0, 0, 0.7),
-            transparent);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.7), transparent);
 
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -32,15 +24,13 @@
     margin: 0 0 1.6rem;
     text-align: center;
 
-    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    font-size: clamp(1.15rem, 2.4vw, 1.7rem);
     font-weight: 800;
     letter-spacing: 0.22em;
     text-transform: uppercase;
 
     color: #facc15;
-    text-shadow:
-        0 0 6px rgba(0, 0, 0, 0.9),
-        0 0 12px rgba(250, 204, 21, 0.7);
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9), 0 0 12px rgba(250, 204, 21, 0.7);
 }
 
 .titleSpacing {
@@ -51,23 +41,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
-    gap: 2rem;
+    flex-wrap: wrap;
+
+    gap: clamp(1rem, 2.5vw, 2rem);
 }
 
 .logoCard {
     position: relative;
     isolation: isolate;
 
-    width: 15rem;
-    height: 15rem;
+    width: clamp(10.5rem, 22vw, 15rem);
+    height: clamp(10.5rem, 22vw, 15rem);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    /* ✅ igual “sensação” do Wag: dá área útil ao logo */
-    padding: 1.25rem;
+    padding: clamp(0.9rem, 2vw, 1.25rem);
 
     border-radius: var(--radius-section);
     overflow: hidden;
@@ -80,19 +70,12 @@
     border-radius: inherit;
 
     background:
-        radial-gradient(circle at 50% 35%,
-            rgba(250, 204, 21, 0.14) 0%,
-            rgba(34, 197, 94, 0.10) 35%,
-            rgba(0, 0, 0, 0.22) 70%,
-            rgba(0, 0, 0, 0.42) 100%),
-        linear-gradient(135deg,
-            rgba(6, 36, 23, 0.62),
-            rgba(0, 0, 0, 0.22));
+        radial-gradient(circle at 50% 35%, rgba(250, 204, 21, 0.14) 0%, rgba(34, 197, 94, 0.1) 35%,
+            rgba(0, 0, 0, 0.22) 70%, rgba(0, 0, 0, 0.42) 100%),
+        linear-gradient(135deg, rgba(6, 36, 23, 0.62), rgba(0, 0, 0, 0.22));
 
     border: 1px solid rgba(250, 204, 21, 0.55);
-    box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.7),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -104,16 +87,11 @@
     inset: 0;
     border-radius: inherit;
 
-    background:
-        radial-gradient(circle at 50% 10%,
-            rgba(255, 255, 255, 0.10) 0%,
-            rgba(250, 204, 21, 0.12) 22%,
-            transparent 58%);
+    background: radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.1) 0%, rgba(250, 204, 21, 0.12) 22%, transparent 58%);
     opacity: 1;
     pointer-events: none;
 }
 
-/* ✅ O essencial: o logo ocupa o “miolo” do card */
 .logoCard img {
     position: relative;
     z-index: 1;
@@ -126,51 +104,39 @@
     object-fit: contain;
     display: block;
 
-    /* dá o boost visual sem cortar */
     transform: scale(1.06);
 
-    filter:
-        drop-shadow(0 10px 18px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 10px rgba(250, 204, 21, 0.18));
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 10px rgba(250, 204, 21, 0.18));
 
-    transition:
-        transform var(--transition-normal),
-        filter var(--transition-normal);
+    transition: transform var(--transition-normal), filter var(--transition-normal);
 }
 
 .logoCard:hover::before {
     border-color: rgba(250, 204, 21, 0.8);
-    box-shadow:
-        0 22px 60px rgba(0, 0, 0, 0.9),
-        0 0 24px rgba(250, 204, 21, 0.45),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.9), 0 0 24px rgba(250, 204, 21, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .logoCard:hover img {
-    transform: translateY(-2px) scale(1.10);
-    filter:
-        drop-shadow(0 16px 32px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 18px rgba(34, 197, 94, 0.25));
-}
-
-@media (max-width: 900px) {
-    .logosRow {
-        flex-wrap: wrap;
-        gap: 1.5rem;
-    }
-
-    .logoCard {
-        width: 13.25rem;
-        height: 13.25rem;
-        padding: 1.1rem;
-    }
+    transform: translateY(-2px) scale(1.1);
+    filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 18px rgba(34, 197, 94, 0.25));
 }
 
 @media (max-width: 640px) {
     .inner {
-        width: min(100%, 100% - 1rem);
         padding: 2.1rem 1.15rem 2.6rem;
     }
 
     .title {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .inner {
+        padding: 1.9rem 1rem 2.35rem;
+    }
+
+    .title {
+        letter-spacing: 0.18em;
     }
 }

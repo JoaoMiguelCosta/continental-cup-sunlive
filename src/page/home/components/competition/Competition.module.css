@@ -1,21 +1,16 @@
-/* src/page/home/components/competition/Competition.module.css */
-
 .section {
     display: flex;
     justify-content: center;
 }
 
 .inner {
-    width: min(var(--page-max-width), 100% - 0.75rem);
+    width: min(var(--page-max-width), 100%);
     margin-inline: auto;
 
-    padding: clamp(2.75rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3.5rem);
+    padding: clamp(2.25rem, 5vw, 3.5rem) clamp(1.05rem, 5vw, 3.5rem);
 
     border-radius: var(--radius-section);
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.92),
-            rgba(0, 0, 0, 0.7),
-            transparent);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.7), transparent);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 
@@ -23,7 +18,6 @@
     text-align: center;
 }
 
-/* Faixa topo */
 .badgeWrapper {
     margin-bottom: 1.8rem;
 }
@@ -40,18 +34,13 @@
 
     color: #facc15;
 
-    background: linear-gradient(90deg,
-            rgba(0, 0, 0, 0.98),
-            rgba(15, 23, 42, 0.95),
-            rgba(0, 0, 0, 0.98));
-
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.98), rgba(15, 23, 42, 0.95), rgba(0, 0, 0, 0.98));
     box-shadow: 0 0 14px rgba(250, 204, 21, 0.9), 0 8px 26px rgba(0, 0, 0, 0.9);
 }
 
-/* Título e texto */
 .title {
     margin: 0 0 1.6rem;
-    font-size: clamp(2rem, 4.4vw, 2.8rem);
+    font-size: clamp(1.7rem, 4.9vw, 2.8rem);
     line-height: 1.25;
     font-weight: 800;
 
@@ -74,7 +63,6 @@
     margin-top: 0.9rem;
 }
 
-/* ✅ Botão principal (Registration Form com estilo dourado) */
 .mainActions {
     display: flex;
     justify-content: center;
@@ -93,24 +81,18 @@
     font-weight: 600;
 
     cursor: pointer;
-    transition:
-        background-color var(--transition-fast),
-        color var(--transition-fast),
-        box-shadow var(--transition-fast),
-        transform var(--transition-fast),
-        border-color var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast),
+        box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
 
     background: var(--color-accent-gold);
     color: #1c1917;
-    box-shadow: 0 16px 35px rgba(250, 204, 21, 0.6),
-        0 0 18px rgba(250, 204, 21, 0.85);
+    box-shadow: 0 16px 35px rgba(250, 204, 21, 0.6), 0 0 18px rgba(250, 204, 21, 0.85);
 }
 
 .buttonMain:hover {
     background: #fbbf24;
     transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 18px 45px rgba(250, 204, 21, 0.8),
-        0 0 24px rgba(250, 204, 21, 0.95);
+    box-shadow: 0 18px 45px rgba(250, 204, 21, 0.8), 0 0 24px rgba(250, 204, 21, 0.95);
 }
 
 .buttonMain:active {
@@ -122,7 +104,6 @@
     outline-offset: 3px;
 }
 
-/* Nota + botões MAG/WAG */
 .note {
     max-width: 52rem;
     margin: 0 auto 2rem;
@@ -150,12 +131,8 @@
     text-transform: uppercase;
 
     cursor: pointer;
-    transition:
-        background-color var(--transition-fast),
-        color var(--transition-fast),
-        box-shadow var(--transition-fast),
-        transform var(--transition-fast),
-        border-color var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast),
+        box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
 }
 
 .categoryButton:focus-visible {
@@ -195,23 +172,20 @@
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95), 0 0 22px rgba(250, 204, 21, 0.95);
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
-    .inner {
-        width: min(100%, 100% - 1rem);
-        padding: 2.25rem 1.25rem 2.75rem;
-    }
-
-    .title {
-        font-size: clamp(1.7rem, 6vw, 2.2rem);
+    .buttonMain {
+        width: 100%;
+        max-width: 16rem;
     }
 
     .paragraph {
         font-size: 0.96rem;
     }
+}
 
-    .buttonMain {
-        width: 100%;
-        max-width: 16rem;
+@media (max-width: 375px) {
+    .badge {
+        padding: 0.4rem 1.35rem;
+        letter-spacing: 0.14em;
     }
 }

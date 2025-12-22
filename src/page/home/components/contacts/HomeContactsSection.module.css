@@ -1,25 +1,17 @@
-/* src/pages/home/components/contacts/HomeContactsSection.module.css */
-
 .section {
     scroll-margin-top: var(--camp-header-offset, 5rem);
-  
-
     display: flex;
     justify-content: center;
-
 }
 
 .inner {
-    width: min(var(--page-max-width), 100% - 0.75rem);
+    width: min(var(--page-max-width), 100%);
     margin-inline: auto;
 
-    padding: clamp(2.25rem, 5vw, 3.25rem) clamp(1.25rem, 4vw, 3rem);
+    padding: clamp(2rem, 5vw, 3.25rem) clamp(1.05rem, 4vw, 3rem);
     border-radius: var(--radius-section);
 
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.92),
-            rgba(0, 0, 0, 0.7),
-            transparent);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.7), transparent);
 
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -30,12 +22,12 @@
 
 .grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.35fr);
-    gap: 2.75rem;
+    gap: clamp(1.5rem, 3vw, 2.75rem);
     align-items: start;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-/* headings estilo Continental Cup */
 .heading {
     margin: 0 0 1rem;
     font-size: 1.05rem;
@@ -43,9 +35,7 @@
     letter-spacing: 0.06em;
 
     color: #22c55e;
-    text-shadow:
-        0 0 14px rgba(22, 163, 74, 0.85),
-        0 0 26px rgba(22, 163, 74, 0.55);
+    text-shadow: 0 0 14px rgba(22, 163, 74, 0.85), 0 0 26px rgba(22, 163, 74, 0.55);
 }
 
 .block+.block {
@@ -57,12 +47,9 @@
     font-size: 1rem;
     line-height: 1.8;
     color: #f9fafb;
-    text-shadow:
-        0 0 6px rgba(0, 0, 0, 0.9),
-        0 0 12px rgba(15, 23, 42, 0.9);
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9), 0 0 12px rgba(15, 23, 42, 0.9);
 }
 
-/* Links list (quadrado dourado + texto verde) */
 .linksList {
     list-style: none;
     padding: 0;
@@ -86,9 +73,7 @@
     border-radius: 0.1rem;
 
     background: #facc15;
-    box-shadow:
-        0 0 10px rgba(250, 204, 21, 0.6),
-        0 0 18px rgba(212, 175, 55, 0.35);
+    box-shadow: 0 0 10px rgba(250, 204, 21, 0.6), 0 0 18px rgba(212, 175, 55, 0.35);
 }
 
 .link {
@@ -98,23 +83,16 @@
     font-weight: 700;
     letter-spacing: 0.02em;
 
-    text-shadow:
-        0 0 6px rgba(34, 197, 94, 0.35),
-        0 0 12px rgba(0, 0, 0, 0.9);
-
-    transition: color var(--transition-fast), text-shadow var(--transition-fast),
-        transform var(--transition-fast);
+    text-shadow: 0 0 6px rgba(34, 197, 94, 0.35), 0 0 12px rgba(0, 0, 0, 0.9);
+    transition: color var(--transition-fast), text-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
 .link:hover {
     color: #facc15;
     transform: translateY(-1px);
-    text-shadow:
-        0 0 10px rgba(250, 204, 21, 0.85),
-        0 0 18px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 0 10px rgba(250, 204, 21, 0.85), 0 0 18px rgba(0, 0, 0, 0.9);
 }
 
-/* GDPR */
 .gdprLink {
     display: inline-block;
     margin-top: 2.2rem;
@@ -124,21 +102,15 @@
     font-weight: 800;
     letter-spacing: 0.03em;
 
-    text-shadow:
-        0 0 10px rgba(22, 163, 74, 0.6),
-        0 0 16px rgba(0, 0, 0, 0.9);
-
+    text-shadow: 0 0 10px rgba(22, 163, 74, 0.6), 0 0 16px rgba(0, 0, 0, 0.9);
     transition: color var(--transition-fast), text-shadow var(--transition-fast);
 }
 
 .gdprLink:hover {
     color: #facc15;
-    text-shadow:
-        0 0 12px rgba(250, 204, 21, 0.8),
-        0 0 18px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 0 12px rgba(250, 204, 21, 0.8), 0 0 18px rgba(0, 0, 0, 0.9);
 }
 
-/* mapa */
 .mapFrame {
     border-radius: var(--radius-section);
     overflow: hidden;
@@ -150,29 +122,30 @@
 .mapFrame iframe {
     display: block;
     width: 100%;
-    height: 22rem;
+    height: clamp(16rem, 35vw, 22rem);
     border: 0;
 }
 
-/* ---------- RESPONSIVO ---------- */
+@media (max-width: 1100px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 980px) {
     .grid {
         grid-template-columns: minmax(0, 1fr);
-        gap: 2rem;
-    }
-
-    .mapFrame iframe {
-        height: 20rem;
     }
 }
 
 @media (max-width: 640px) {
     .inner {
-        width: min(100%, 100% - 1rem);
         padding: 2.1rem 1.15rem 2.6rem;
     }
+}
 
-    .mapFrame iframe {
-        height: 18rem;
+@media (max-width: 375px) {
+    .inner {
+        padding: 1.9rem 1rem 2.35rem;
     }
 }
