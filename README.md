@@ -1,15 +1,18 @@
 # 🏆 Continental Cup — Sunlive Group
 
 ## TL;DR
+
 Projeto web completo (Frontend + Backend) para o **International Continental Cup 2026**.  
 🚧 **Em desenvolvimento** — funcional em dev, a faltar preparação final para produção.
 
 ---
 
 ## 🌍 Sobre o projeto
+
 O **Continental Cup** é um projeto desenvolvido para a **Sunlive Group**, com o objetivo de divulgar oficialmente o evento e gerir **inscrições internacionais** de ginástica (MAG & WAG).
 
 A aplicação foi pensada para:
+
 - Ser clara e intuitiva para atletas, clubes e federações
 - Centralizar inscrições de forma segura
 - Permitir fácil evolução e manutenção
@@ -17,15 +20,18 @@ A aplicação foi pensada para:
 ---
 
 ## 🧱 Arquitetura
+
 O projeto está dividido em **duas partes independentes**:
 
 ### 🎨 Frontend
+
 - Website institucional do evento
 - Página única com secções
 - Formulário de inscrição em modal
 - Comunicação direta com a API
 
 ### 🧠 Backend
+
 - API REST para inscrições
 - Validação rigorosa dos dados
 - Persistência local + Google Sheets
@@ -34,13 +40,16 @@ O projeto está dividido em **duas partes independentes**:
 ---
 
 ## ⚙️ Stack Tecnológica
+
 ### Frontend
+
 - React
 - Vite
 - CSS Modules
 - JavaScript (ESM)
 
 ### Backend
+
 - Node.js
 - Express
 - Zod (validação)
@@ -50,6 +59,7 @@ O projeto está dividido em **duas partes independentes**:
 ---
 
 ## 🗂️ Estrutura do repositório
+
 ```
 continental-cup/
 │
@@ -65,7 +75,9 @@ continental-cup/
 ---
 
 ## ✨ Funcionalidades principais
+
 ### Website
+
 - Landing page do evento
 - Navegação por secções com scroll suave
 - Hero com CTAs (Poster / Registration)
@@ -75,6 +87,7 @@ continental-cup/
 - Back-to-top
 
 ### API
+
 - `POST /api/registrations`
 - Validação completa do formulário
 - Backup local (`registrations.json`)
@@ -84,10 +97,13 @@ continental-cup/
 ---
 
 ## 🚧 Estado do projeto
+
 O projeto encontra-se **em desenvolvimento avançado**.
 
 ### Falta concluir antes de produção:
+
 #### 1️⃣ Preparação de ambientes (dev / prod)
+
 - Separar configurações:
   - `server/.env` → desenvolvimento
   - `server/.env.production` ou env vars no hosting → produção
@@ -99,6 +115,7 @@ O projeto encontra-se **em desenvolvimento avançado**.
   - remover `origin: "*"`
 
 #### 2️⃣ Deploy
+
 - Frontend:
   - Vercel / Netlify / similar
 - Backend:
@@ -112,6 +129,7 @@ O projeto encontra-se **em desenvolvimento avançado**.
   - Garantir backend com HTTPS e CORS correto
 
 #### 3️⃣ Segurança extra (fase seguinte)
+
 - Rate-limit mais apertado apenas em `/api/registrations`
 - Anti-bot simples:
   - Honeypot no formulário
@@ -123,13 +141,16 @@ O projeto encontra-se **em desenvolvimento avançado**.
 ---
 
 ## 📄 READMEs específicos
-- 📘 Frontend → `README-frontend-continental-cup.md`
-- 📗 Backend → `README-backend-continental-cup.md`
+
+- 📘 Frontend → `README.md`
+- 📗 Backend → `README.md`
 
 ---
 
 ## 📌 Nota final
+
 Este projeto segue a mesma filosofia do **WAG Training Camp**:
+
 - Código organizado
 - Separação clara de responsabilidades
 - Preparado para escalar e ir para produção
@@ -139,4 +160,5 @@ Este projeto segue a mesma filosofia do **WAG Training Camp**:
 ---
 
 ## 📄 Licença
+
 Projeto interno / privado — Sunlive Group.
