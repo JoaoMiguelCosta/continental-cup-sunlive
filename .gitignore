@@ -7,10 +7,28 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Builds
 dist
 dist-ssr
+
+# Local env / config
 *.local
+
+# Env files (NUNCA commitar)
+.env
+.env.*
+!.env.example
+
+# Se usas env dentro de server/
+server/.env
+server/.env.*
+!server/.env.example
+
+# Runtime data (backup local)
+server/data/registrations.json
 
 # Editor directories and files
 .vscode/*

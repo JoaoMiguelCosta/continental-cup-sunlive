@@ -1,55 +1,46 @@
 # 🏆 Continental Cup — Sunlive Group
 
 ## TL;DR
-
 Projeto web completo (Frontend + Backend) para o **International Continental Cup 2026**.  
-🚧 **Em desenvolvimento** — funcional em dev, a faltar preparação final para produção.
+🚧 **Projeto em desenvolvimento** — funcional em ambiente de desenvolvimento, a faltar preparação final para produção.
 
 ---
 
 ## 🌍 Sobre o projeto
-
 O **Continental Cup** é um projeto desenvolvido para a **Sunlive Group**, com o objetivo de divulgar oficialmente o evento e gerir **inscrições internacionais** de ginástica (MAG & WAG).
 
-A aplicação foi pensada para:
-
-- Ser clara e intuitiva para atletas, clubes e federações
+O sistema foi pensado para:
+- Ser claro e intuitivo para atletas, clubes e federações
 - Centralizar inscrições de forma segura
-- Permitir fácil evolução e manutenção
+- Facilitar manutenção e evolução futura
 
 ---
 
-## 🧱 Arquitetura
-
+## 🧱 Arquitetura do projeto
 O projeto está dividido em **duas partes independentes**:
 
 ### 🎨 Frontend
-
 - Website institucional do evento
-- Página única com secções
-- Formulário de inscrição em modal
+- Página única com navegação por secções
+- Modal de inscrição
 - Comunicação direta com a API
 
 ### 🧠 Backend
-
-- API REST para inscrições
+- API REST para submissão de inscrições
 - Validação rigorosa dos dados
-- Persistência local + Google Sheets
+- Backup local + integração com Google Sheets
 - Preparado para produção
 
 ---
 
 ## ⚙️ Stack Tecnológica
-
 ### Frontend
-
 - React
 - Vite
 - CSS Modules
 - JavaScript (ESM)
 
 ### Backend
-
 - Node.js
 - Express
 - Zod (validação)
@@ -59,25 +50,30 @@ O projeto está dividido em **duas partes independentes**:
 ---
 
 ## 🗂️ Estrutura do repositório
-
 ```
 continental-cup/
 │
-├─ src/                        # Frontend (React + Vite)
-├─ server/                     # Backend (Express API)
-├─ public/                     # PDFs, posters e downloads
+├─ src/                 # Frontend (React + Vite)
+│  └─ README.md         # README do Frontend
 │
-├─ README.md                   # README geral (este ficheiro)
-├─ README-frontend-continental-cup.md
-└─ README-backend-continental-cup.md
+├─ server/              # Backend (Express API)
+│  └─ README.md         # README do Backend
+│
+├─ public/              # PDFs, posters e downloads
+│
+└─ README.md            # README geral (este ficheiro)
 ```
 
 ---
 
+## 📄 READMEs específicos
+- 📘 Frontend → [README.md](./src/README.md)
+- 📗 Backend → [README.md](./server/README.md)
+
+---
+
 ## ✨ Funcionalidades principais
-
 ### Website
-
 - Landing page do evento
 - Navegação por secções com scroll suave
 - Hero com CTAs (Poster / Registration)
@@ -87,78 +83,52 @@ continental-cup/
 - Back-to-top
 
 ### API
-
 - `POST /api/registrations`
 - Validação completa do formulário
-- Backup local (`registrations.json`)
+- Backup local em ficheiro JSON
 - Integração com Google Sheets
 - Health check (`/api/health`)
 
 ---
 
-## 🚧 Estado do projeto
-
+## 🚧 Estado atual do projeto
 O projeto encontra-se **em desenvolvimento avançado**.
 
 ### Falta concluir antes de produção:
-
 #### 1️⃣ Preparação de ambientes (dev / prod)
-
 - Separar configurações:
   - `server/.env` → desenvolvimento
-  - `server/.env.production` ou env vars no hosting → produção
+  - `server/.env.production` (ou env vars no hosting) → produção
 - No frontend:
   - `VITE_API_BASE_URL` distinto para dev / prod
+    - dev: `http://localhost:4000/api`
+    - prod: `https://api.dominio-real.pt/api`
 - No CORS:
-  - manter `http://localhost:5173` em dev
-  - adicionar domínio real em produção
-  - remover `origin: "*"`
+  - manter `http://localhost:5173` para dev
+  - adicionar domínio real quando existir
+  - remover `origin: "*"` completamente
 
-#### 2️⃣ Deploy
-
+#### 2️⃣ Pensar no deploy
+Quando os pontos acima estiverem OK:
 - Frontend:
-  - Vercel / Netlify / similar
+  - Vercel / Netlify / outro (build Vite)
 - Backend:
-  - Render / Railway / similar
-  - Definir vars:
-    - `GOOGLE_SHEETS_CLIENT_EMAIL`
-    - `GOOGLE_SHEETS_PRIVATE_KEY`
-    - `GOOGLE_SHEETS_ID`
+  - Render / Railway / outra plataforma free/low cost
+  - Colocar `GOOGLE_SHEETS_*` e `GOOGLE_SHEETS_ID` como env vars lá
 - Domínio + HTTPS:
-  - Ligar domínio ao frontend
+  - Ligar domínio do cliente ao frontend
   - Garantir backend com HTTPS e CORS correto
 
-#### 3️⃣ Segurança extra (fase seguinte)
-
+#### 3️⃣ Segurança extra (mais à frente)
+Quando já estiver tudo a funcionar em produção:
 - Rate-limit mais apertado apenas em `/api/registrations`
 - Anti-bot simples:
-  - Honeypot no formulário
-- Logging leve adicional:
-  - IP resumido
-  - user-agent
-  - sem dados sensíveis
-
----
-
-## 📄 READMEs específicos
-
-- 📘 Frontend → `README.md`
-- 📗 Backend → `README.md`
-
----
-
-## 📌 Nota final
-
-Este projeto segue a mesma filosofia do **WAG Training Camp**:
-
-- Código organizado
-- Separação clara de responsabilidades
-- Preparado para escalar e ir para produção
-
-🚀 Próximo passo: **finalizar ambientes e fazer deploy**.
+  - campo escondido (honeypot) no form
+  - se o campo vier preenchido, ignorar o pedido
+- Pequeno log extra:
+  - IP resumido, user-agent, etc., num ficheiro separado (sem dados sensíveis)
 
 ---
 
 ## 📄 Licença
-
 Projeto interno / privado — Sunlive Group.
