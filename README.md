@@ -1,15 +1,18 @@
 # 🏆 Continental Cup — Sunlive Group
 
 ## TL;DR
+
 Projeto web completo (Frontend + Backend) para o **International Continental Cup 2026**.  
 🚧 **Projeto em desenvolvimento** — funcional em ambiente de desenvolvimento, a faltar preparação final para produção.
 
 ---
 
 ## 🌍 Sobre o projeto
+
 O **Continental Cup** é um projeto desenvolvido para a **Sunlive Group**, com o objetivo de divulgar oficialmente o evento e gerir **inscrições internacionais** de ginástica (MAG & WAG).
 
 O sistema foi pensado para:
+
 - Ser claro e intuitivo para atletas, clubes e federações
 - Centralizar inscrições de forma segura
 - Facilitar manutenção e evolução futura
@@ -17,15 +20,18 @@ O sistema foi pensado para:
 ---
 
 ## 🧱 Arquitetura do projeto
+
 O projeto está dividido em **duas partes independentes**:
 
 ### 🎨 Frontend
+
 - Website institucional do evento
 - Página única com navegação por secções
 - Modal de inscrição
 - Comunicação direta com a API
 
 ### 🧠 Backend
+
 - API REST para submissão de inscrições
 - Validação rigorosa dos dados
 - Backup local + integração com Google Sheets
@@ -34,13 +40,16 @@ O projeto está dividido em **duas partes independentes**:
 ---
 
 ## ⚙️ Stack Tecnológica
+
 ### Frontend
+
 - React
 - Vite
 - CSS Modules
 - JavaScript (ESM)
 
 ### Backend
+
 - Node.js
 - Express
 - Zod (validação)
@@ -50,6 +59,7 @@ O projeto está dividido em **duas partes independentes**:
 ---
 
 ## 🗂️ Estrutura do repositório
+
 ```
 continental-cup/
 │
@@ -67,13 +77,16 @@ continental-cup/
 ---
 
 ## 📄 READMEs específicos
+
 - 📘 Frontend → [README.md](./src/README.md)
 - 📗 Backend → [README.md](./server/README.md)
 
 ---
 
 ## ✨ Funcionalidades principais
+
 ### Website
+
 - Landing page do evento
 - Navegação por secções com scroll suave
 - Hero com CTAs (Poster / Registration)
@@ -83,6 +96,7 @@ continental-cup/
 - Back-to-top
 
 ### API
+
 - `POST /api/registrations`
 - Validação completa do formulário
 - Backup local em ficheiro JSON
@@ -92,10 +106,13 @@ continental-cup/
 ---
 
 ## 🚧 Estado atual do projeto
+
 O projeto encontra-se **em desenvolvimento avançado**.
 
 ### Falta concluir antes de produção:
+
 #### 1️⃣ Preparação de ambientes (dev / prod)
+
 - Separar configurações:
   - `server/.env` → desenvolvimento
   - `server/.env.production` (ou env vars no hosting) → produção
@@ -109,7 +126,9 @@ O projeto encontra-se **em desenvolvimento avançado**.
   - remover `origin: "*"` completamente
 
 #### 2️⃣ Pensar no deploy
+
 Quando os pontos acima estiverem OK:
+
 - Frontend:
   - Vercel / Netlify / outro (build Vite)
 - Backend:
@@ -120,7 +139,9 @@ Quando os pontos acima estiverem OK:
   - Garantir backend com HTTPS e CORS correto
 
 #### 3️⃣ Segurança extra (mais à frente)
+
 Quando já estiver tudo a funcionar em produção:
+
 - Rate-limit mais apertado apenas em `/api/registrations`
 - Anti-bot simples:
   - campo escondido (honeypot) no form
@@ -131,4 +152,5 @@ Quando já estiver tudo a funcionar em produção:
 ---
 
 ## 📄 Licença
+
 Projeto interno / privado — Sunlive Group.
