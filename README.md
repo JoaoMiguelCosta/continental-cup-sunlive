@@ -1,156 +1,195 @@
-# 🏆 Continental Cup — Sunlive Group
+# 🏆 Continental Cup 2026 — Official Website
 
-## TL;DR
+Website oficial do **International Continental Cup 2026 (MAG & WAG)**.  
+Single-page responsiva, construída em **React + Vite**, com navegação por âncoras, conteúdo centralizado em configuração e **formulário de inscrição via Google Forms** em modal.
 
-Projeto web completo (Frontend + Backend) para o **International Continental Cup 2026**.  
-🚧 **Projeto em desenvolvimento** — funcional em ambiente de desenvolvimento, a faltar preparação final para produção.
-
----
-
-## 🌍 Sobre o projeto
-
-O **Continental Cup** é um projeto desenvolvido para a **Sunlive Group**, com o objetivo de divulgar oficialmente o evento e gerir **inscrições internacionais** de ginástica (MAG & WAG).
-
-O sistema foi pensado para:
-
-- Ser claro e intuitivo para atletas, clubes e federações
-- Centralizar inscrições de forma segura
-- Facilitar manutenção e evolução futura
+🌍 **Produção:**  
+👉 https://continentalcup.sunlive.pt/
 
 ---
 
-## 🧱 Arquitetura do projeto
+## 📌 Visão Geral
 
-O projeto está dividido em **duas partes independentes**:
+O site apresenta toda a informação do evento:
 
-### 🎨 Frontend
-
-- Website institucional do evento
-- Página única com navegação por secções
-- Modal de inscrição
-- Comunicação direta com a API
-
-### 🧠 Backend
-
-- API REST para submissão de inscrições
-- Validação rigorosa dos dados
-- Backup local + integração com Google Sheets
-- Preparado para produção
+- Hero com datas, localização e poster
+- Mensagem institucional (CEO Sunlive Group)
+- Secção **Competition** com:
+  - Modal de inscrição (Google Forms)
+  - Downloads oficiais **MAG / WAG**
+- Venue (Velódromo de Sangalhos)
+- Hotel & Restaurant
+- Sunlive Group
+- Contactos + mapa
+- Footer institucional
 
 ---
 
-## ⚙️ Stack Tecnológica
+## 🧱 Stack Tecnológica
 
-### Frontend
-
-- React
-- Vite
-- CSS Modules
-- JavaScript (ESM)
-
-### Backend
-
-- Node.js
-- Express
-- Zod (validação)
-- Google Sheets API
-- Helmet, CORS, Rate Limit
+- ⚛️ React
+- ⚡ Vite
+- 🎨 CSS Modules
+- 🧩 Conteúdo centralizado em config (`home.content.js`)
+- 📝 Google Forms integrado via `iframe`
 
 ---
 
-## 🗂️ Estrutura do repositório
+## 🚀 Produção
+
+- **Domínio:** https://continentalcup.sunlive.pt/
+- **Tipo:** Static SPA (Single Page Application)
+- **Build:** `vite build`
+- **Output:** `/dist`
+
+---
+
+## 📂 Estrutura do Projeto
 
 ```
-continental-cup/
-│
-├─ src/                 # Frontend (React + Vite)
-│  └─ README.md         # README do Frontend
-│
-├─ server/              # Backend (Express API)
-│  └─ README.md         # README do Backend
-│
-├─ public/              # PDFs, posters e downloads
-│
-└─ README.md            # README geral (este ficheiro)
+src/
+  page/
+    home/
+      components/
+        backToTop/
+        competition/
+        contacts/
+        footer/
+        header/
+        hero/
+        hotel/
+        message/
+        poster/
+        sunlive/
+        venue/
+        HomeOrgPartnersSection/
+      Home.jsx
+      Home.module.css
+
+  config/
+    content/
+      home.content.js
+
+  assets/
+    backgrounds/
+    logos/
+    person/
+    poster/
+
+  styles/
+    global.css
+
+App.jsx
+main.jsx
+index.html
 ```
 
 ---
 
-## 📄 READMEs específicos
+## 🧠 Gestão de Conteúdo
 
-- 📘 Frontend → [README.md](./src/README.md)
-- 📗 Backend → [README.md](./server/README.md)
+Todo o conteúdo do site é controlado a partir de:
 
----
+📄 `src/config/content/home.content.js`
 
-## ✨ Funcionalidades principais
+Inclui:
 
-### Website
-
-- Landing page do evento
-- Navegação por secções com scroll suave
-- Hero com CTAs (Poster / Registration)
-- Modal de inscrição
-- Downloads MAG / WAG
-- Secções: Venue, Hotel, Sunlive Group, Contacts
-- Back-to-top
-
-### API
-
-- `POST /api/registrations`
-- Validação completa do formulário
-- Backup local em ficheiro JSON
-- Integração com Google Sheets
-- Health check (`/api/health`)
+- Menu / navegação
+- Hero (títulos, datas, poster)
+- Secção Competition (textos, botões, downloads)
+- Venue, Hotel, Sunlive
+- Contacts + mapa
+- Footer
 
 ---
 
-## 🚧 Estado atual do projeto
+## 🏆 Competition — Registration Form
 
-O projeto encontra-se **em desenvolvimento avançado**.
+A secção **Competition** inclui um botão de inscrição que abre um **modal** com um **Google Form** embutido.
 
-### Falta concluir antes de produção:
+📍 Componente:
+`src/page/home/components/competition/Competition.jsx`
 
-#### 1️⃣ Preparação de ambientes (dev / prod)
+Funcionalidades:
 
-- Separar configurações:
-  - `server/.env` → desenvolvimento
-  - `server/.env.production` (ou env vars no hosting) → produção
-- No frontend:
-  - `VITE_API_BASE_URL` distinto para dev / prod
-    - dev: `http://localhost:4000/api`
-    - prod: `https://api.dominio-real.pt/api`
-- No CORS:
-  - manter `http://localhost:5173` para dev
-  - adicionar domínio real quando existir
-  - remover `origin: "*"` completamente
-
-#### 2️⃣ Pensar no deploy
-
-Quando os pontos acima estiverem OK:
-
-- Frontend:
-  - Vercel / Netlify / outro (build Vite)
-- Backend:
-  - Render / Railway / outra plataforma free/low cost
-  - Colocar `GOOGLE_SHEETS_*` e `GOOGLE_SHEETS_ID` como env vars lá
-- Domínio + HTTPS:
-  - Ligar domínio do cliente ao frontend
-  - Garantir backend com HTTPS e CORS correto
-
-#### 3️⃣ Segurança extra (mais à frente)
-
-Quando já estiver tudo a funcionar em produção:
-
-- Rate-limit mais apertado apenas em `/api/registrations`
-- Anti-bot simples:
-  - campo escondido (honeypot) no form
-  - se o campo vier preenchido, ignorar o pedido
-- Pequeno log extra:
-  - IP resumido, user-agent, etc., num ficheiro separado (sem dados sensíveis)
+- Modal com `iframe`
+- Fecho por:
+  - Botão ✕
+  - Click fora (overlay)
+  - Tecla `ESC`
+- Scroll do body bloqueado enquanto o modal está aberto
+- Indicador de carregamento do formulário
 
 ---
 
-## 📄 Licença
+## 📥 Downloads Oficiais (MAG / WAG)
 
-Projeto interno / privado — Sunlive Group.
+Após submissão do formulário, os ficheiros oficiais podem ser descarregados:
+
+- **MAG:** `/downloads/continental-cup-2026-mag.zip`
+- **WAG:** `/downloads/continental-cup-2026-wag.zip`
+
+📌 Localização esperada:
+
+```
+public/downloads/
+```
+
+---
+
+## 🖼️ Assets
+
+Todos os assets são geridos via Vite:
+
+- Fundos: `assets/backgrounds`
+- Logos: `assets/logos`
+- Pessoas: `assets/person`
+- Poster oficial: `assets/poster`
+
+---
+
+## 🌍 HTML Base
+
+📄 `index.html`
+
+- `lang="en"`
+- Favicon configurado:
+
+```
+/public/continental-cup-icon.png
+```
+
+---
+
+## 📱 Responsividade
+
+- Totalmente responsivo (mobile / tablet / desktop)
+- Layout modular por secção
+- CSS Modules para isolamento de estilos
+
+---
+
+## 🧭 Navegação
+
+Navegação por âncoras (`id`):
+
+- `home`
+- `cup`
+- `venue`
+- `hotel-rest`
+- `sunlive`
+- `contacts`
+
+---
+
+## 📧 Contactos Oficiais
+
+**Event Manager:** Francesca Borg  
+📞 (+356) 99164245  
+✉️ malta@sunlive.pt
+
+---
+
+## © Licença
+
+© 2026 Sunlive Group — All Rights Reserved
