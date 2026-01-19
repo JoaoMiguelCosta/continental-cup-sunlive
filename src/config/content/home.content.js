@@ -99,7 +99,7 @@ export const homeContent = {
     },
 
     downloadNote:
-      "After filling out the registration form, download the files (WAG or MAG) and send them, properly completed, to malta@sunlive.pt. Thank you.",
+      "After filling out the registration form, download the files (WAG or MAG) and send them, properly completed, to sunlivegymnastics@gmail.com. Thank you.",
 
     // ✅ agora com links para os zips em /public/downloads
     categoryCtas: {
