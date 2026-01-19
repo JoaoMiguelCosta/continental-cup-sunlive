@@ -294,11 +294,11 @@ export const homeContent = {
     },
     eventManager: {
       title: "Event Manager",
-      name: "Francesca Borg",
+      name: "Mariana Remelgado",
       phoneLabel: "Phone:",
-      phoneValue: "(+356) 99164245",
+      phoneValue: "+351 934 094 584",
       emailLabel: "E-mail:",
-      emailValue: "malta@sunlive.pt",
+      emailValue: "sunlivegymnastics@gmail.com",
     },
     links: {
       title: "Links",
