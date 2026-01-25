@@ -72,7 +72,9 @@
 .mainActions {
     display: flex;
     justify-content: center;
-    margin-bottom: 2.4rem;
+
+    /* ✅ antes: 2.4rem (pensado para ter botões MAG/WAG por baixo) */
+    margin-bottom: 0;
 }
 
 .buttonMain {
@@ -93,15 +95,13 @@
 
     background: var(--color-accent-gold);
     color: #1c1917;
-    box-shadow: 0 16px 35px rgba(250, 204, 21, 0.6),
-        0 0 18px rgba(250, 204, 21, 0.85);
+    box-shadow: 0 16px 35px rgba(250, 204, 21, 0.6), 0 0 18px rgba(250, 204, 21, 0.85);
 }
 
 .buttonMain:hover {
     background: #fbbf24;
     transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 18px 45px rgba(250, 204, 21, 0.8),
-        0 0 24px rgba(250, 204, 21, 0.95);
+    box-shadow: 0 18px 45px rgba(250, 204, 21, 0.8), 0 0 24px rgba(250, 204, 21, 0.95);
 }
 
 .buttonMain:active {
@@ -113,6 +113,10 @@
     outline-offset: 3px;
 }
 
+/* ❌ downloadNote oculto (mantém para reativar quando quiseres)
+   - Este estilo é para o bloco:
+   <p className={styles.note}>{downloadNote}</p>
+*/
 .note {
     max-width: 52rem;
     margin: 0 auto 2rem;
@@ -122,67 +126,75 @@
     color: var(--color-text-soft);
 }
 
+/* ✅ fim do estilo do downloadNote oculto */
+
+/* ❌ categoryCtas oculto (mantém para reativar quando quiseres)
+   - Estes estilos eram para:
+   .categoryActions, .categoryButton, .categoryButtonMag, .categoryButtonWag, etc.
+*/
+/*
 .categoryActions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .categoryButton {
-    min-width: 6.5rem;
-    padding: 0.65rem 1.6rem;
-    border-radius: 999px;
+  min-width: 6.5rem;
+  padding: 0.65rem 1.6rem;
+  border-radius: 999px;
 
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 
-    cursor: pointer;
-    transition: background-color var(--transition-fast), color var(--transition-fast),
-        box-shadow var(--transition-fast), transform var(--transition-fast),
-        border-color var(--transition-fast);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+    box-shadow var(--transition-fast), transform var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .categoryButton:focus-visible {
-    outline: 3px solid rgba(250, 204, 21, 0.45);
-    outline-offset: 3px;
+  outline: 3px solid rgba(250, 204, 21, 0.45);
+  outline-offset: 3px;
 }
 
 .categoryButtonMag {
-    border: 1px solid rgba(34, 197, 94, 0.7);
-    background: radial-gradient(circle at 50% 0%, #022c22 0%, #064e3b 100%);
-    color: #eafff5;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(34, 197, 94, 0.7);
+  background: radial-gradient(circle at 50% 0%, #022c22 0%, #064e3b 100%);
+  color: #eafff5;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
 }
 
 .categoryButtonMag:hover {
-    border-color: rgba(74, 222, 128, 0.95);
-    background: radial-gradient(circle at 50% 0%, #065f46 0%, #10b981 100%);
-    color: #ecfdf3;
+  border-color: rgba(74, 222, 128, 0.95);
+  background: radial-gradient(circle at 50% 0%, #065f46 0%, #10b981 100%);
+  color: #ecfdf3;
 
-    transform: translateY(-1px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95),
-        0 0 22px rgba(34, 197, 94, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95),
+    0 0 22px rgba(34, 197, 94, 0.95);
 }
 
 .categoryButtonWag {
-    border: 1px solid rgba(250, 204, 21, 0.7);
-    background: radial-gradient(circle at 50% 0%, #3b0a0a 0%, #7f1d1d 100%);
-    color: #fef3c7;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(250, 204, 21, 0.7);
+  background: radial-gradient(circle at 50% 0%, #3b0a0a 0%, #7f1d1d 100%);
+  color: #fef3c7;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
 }
 
 .categoryButtonWag:hover {
-    border-color: rgba(250, 204, 21, 0.95);
-    background: radial-gradient(circle at 50% 0%, #78350f 0%, #d97706 100%);
-    color: #fffbeb;
+  border-color: rgba(250, 204, 21, 0.95);
+  background: radial-gradient(circle at 50% 0%, #78350f 0%, #d97706 100%);
+  color: #fffbeb;
 
-    transform: translateY(-1px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95),
-        0 0 22px rgba(250, 204, 21, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95),
+    0 0 22px rgba(250, 204, 21, 0.95);
 }
+*/
 
 @media (max-width: 768px) {
     .buttonMain {
@@ -212,10 +224,15 @@
     display: grid;
     place-items: center;
 
-    background:
-        radial-gradient(1200px 700px at 50% 18%, rgba(250, 204, 21, 0.12), transparent 60%),
-        radial-gradient(900px 600px at 50% 85%, rgba(34, 197, 94, 0.10), transparent 55%),
-        radial-gradient(120% 120% at 50% 50%, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.86));
+    background: radial-gradient(1200px 700px at 50% 18%,
+            rgba(250, 204, 21, 0.12),
+            transparent 60%),
+        radial-gradient(900px 600px at 50% 85%,
+            rgba(34, 197, 94, 0.1),
+            transparent 55%),
+        radial-gradient(120% 120% at 50% 50%,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.86));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
@@ -242,13 +259,10 @@
     flex-direction: column;
 
     background: linear-gradient(180deg, rgba(17, 17, 17, 0.94), rgba(8, 8, 8, 0.92));
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 
-    box-shadow:
-        0 30px 90px rgba(0, 0, 0, 0.75),
-        0 0 0 1px rgba(250, 204, 21, 0.10),
-        0 0 30px rgba(250, 204, 21, 0.22),
-        0 0 40px rgba(34, 197, 94, 0.12);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(250, 204, 21, 0.1),
+        0 0 30px rgba(250, 204, 21, 0.22), 0 0 40px rgba(34, 197, 94, 0.12);
 
     position: relative;
     animation: modalIn 180ms ease-out;
@@ -274,11 +288,9 @@
     border-radius: 18px;
     background: linear-gradient(90deg,
             rgba(250, 204, 21, 0.55),
-            rgba(34, 197, 94, 0.40),
+            rgba(34, 197, 94, 0.4),
             rgba(250, 204, 21, 0.55));
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
@@ -294,10 +306,10 @@
     padding: 12px 12px;
 
     background: linear-gradient(90deg,
-            rgba(250, 204, 21, 0.10),
-            rgba(0, 0, 0, 0.0) 55%,
+            rgba(250, 204, 21, 0.1),
+            rgba(0, 0, 0, 0) 55%,
             rgba(34, 197, 94, 0.08));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -326,7 +338,7 @@
 }
 
 .modalClose:hover {
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.1);
     transform: translateY(-1px);
     box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.12);
 }
@@ -343,9 +355,13 @@
     position: absolute;
     inset: 12px;
     border-radius: 14px;
-    background:
-        radial-gradient(500px 220px at 30% 30%, rgba(250, 204, 21, 0.10), transparent 55%),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
+    background: radial-gradient(500px 220px at 30% 30%,
+            rgba(250, 204, 21, 0.1),
+            transparent 55%),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.05));
     animation: shimmer 1.2s infinite linear;
     opacity: 0.6;
     pointer-events: none;
@@ -357,7 +373,7 @@
     }
 
     50% {
-        filter: brightness(1.10);
+        filter: brightness(1.1);
     }
 
     100% {

@@ -1,5 +1,4 @@
-// src/page/home/components/competition/Competition.jsx
-
+// src/pages/home/components/competition/Competition.jsx
 import { useEffect, useState } from "react";
 import { homeContent } from "../../../../config/content/home.content.js";
 import styles from "./Competition.module.css";
@@ -9,8 +8,12 @@ const FORM_URL =
 
 export function CompetitionSection() {
   const { competitionSection } = homeContent;
-  const { id, badge, title, paragraphs, mainCtas, downloadNote, categoryCtas } =
-    competitionSection;
+
+  // ❌ downloadNote e categoryCtas ocultos (mantém se precisares depois)
+  // const { id, badge, title, paragraphs, mainCtas, downloadNote, categoryCtas } =
+  //   competitionSection;
+
+  const { id, badge, title, paragraphs, mainCtas } = competitionSection;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormLoaded, setIsFormLoaded] = useState(false);
@@ -71,8 +74,13 @@ export function CompetitionSection() {
           </button>
         </div>
 
+        {/* ❌ downloadNote oculto (mantém para reativar quando quiseres) */}
+        {/*
         <p className={styles.note}>{downloadNote}</p>
+        */}
 
+        {/* ❌ categoryCtas oculto (mantém para reativar quando quiseres) */}
+        {/*
         <div className={styles.categoryActions}>
           <a
             href={categoryCtas.mag.href}
@@ -90,6 +98,7 @@ export function CompetitionSection() {
             {categoryCtas.wag.label}
           </a>
         </div>
+        */}
       </div>
 
       {/* MODAL */}
